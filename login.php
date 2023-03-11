@@ -73,6 +73,7 @@
 		.error {
 			color: red;
 			margin-bottom: 10px;
+			font-size: 18px; 
 		}
 
 		/*mini blue text */
@@ -170,6 +171,7 @@
   <input type="submit" value="Reset Password">
   <p class="remember-link" id="remember-toggle">Remembered your password?</p>
 </form>
+
 
 
 <script>

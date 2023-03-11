@@ -10,8 +10,12 @@ $db->exec("CREATE TABLE IF NOT EXISTS users (
     email TEXT UNIQUE,
     password TEXT,
     dob TEXT,
-    token TEXT
+    token TEXT,
+    notification_sent INTEGER,
+    is_sub_user INTEGER DEFAULT 0,
+    parent_id INTEGER DEFAULT 0
 )");
+
 $db->exec("CREATE TABLE IF NOT EXISTS debits (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id INTEGER,
