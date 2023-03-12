@@ -106,8 +106,14 @@ foreach ($family_birthdays as $family_birthday) {
 	<meta name="viewport" content="width=device-width, initial-scale=1">
  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+	
 	<style>
+		*{ 
+			margin: 0; 
+			padding: 0; 
+			box-sizing: border-box; 
+		}
 		body {
 			font-family: 'Poppins', sans-serif;
 			display: flex;
@@ -117,47 +123,7 @@ foreach ($family_birthdays as $family_birthday) {
 			background-color: #F0F8FF;
 			overflow-y: scroll;
 		}
-		
-		.navbar {
-			position: fixed;
-			top: 0;
-			left: 0;
-			width: 200px;
-			background-color: #333;
-			height: 100%;
-			color: white;
-			padding-top: 20px;
-			box-sizing: border-box;
-		}
-		
-		nav {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			height: 100%;
-			padding: 20px;
-			box-sizing: border-box;
-			font-size: 20px;
-			align-items: center;
-			text: center; 
-		}
-
-		.navbar h3, .navbar p, .navbar a {
-			text-align: center;
-			color: white;
-			text-decoration: none;
-			margin-bottom: 10px;
-			font-size: 20px;
-			}
-		
-
-		
-		nav a:hover {
-			text-decoration: underline;
-			color: red; 
-		}
-		
-		
+				
 		#add-form {
 			display: flex;
 			flex-direction: column;
@@ -173,7 +139,7 @@ foreach ($family_birthdays as $family_birthday) {
 
 		label {
 			display: block;
-			font-size: 18px;
+			
 			font-weight: bold;
 			margin-bottom: 10px;
 		}
@@ -205,11 +171,11 @@ foreach ($family_birthdays as $family_birthday) {
 				border: none;
 				border-radius: 5px;
 				cursor: pointer;
-				font-size: 16px;
+				
 				margin-top: 10px;
 				width: 100%;
 				transition: 0.3s ease;
-				font-size: 20px; 
+ 
 		}
 		
 		input[type=submit]:hover {
@@ -220,37 +186,28 @@ foreach ($family_birthdays as $family_birthday) {
 		h1{ 
 			justify-content: center; 
 			align-content: center; 
+			margin-bottom: 20px;
 		}
 
 		/*table*/ 
 		#show-form {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
 			background-color: #DCDCDC;
-			padding: 10px;
+			padding: 20px;
 			border-radius: 10px;
-			box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-			width: 7000px;
-			margin-bottom: 30px;
-			padding-right: 130px;
-			
-			display: none;
-			margin-top: 20px;
-
-			border-radius: 5px;
-
-			max-height: 9999px;
+			max-width: 900px;
+			margin: 0 auto;
+			display: block;
+			align-items: center; 
+			justify-content: center; 
 			}
 
-		table {
-			align-items: center;
+			table {
 			border-collapse: collapse;
 			width: 100%;
 			max-width: 600px;
 			margin: 0 auto;
-			border-collapse: collapse;
 			margin-bottom: 20px;
+			font-size: 16px;
 			}
 
 			thead {
@@ -260,12 +217,16 @@ foreach ($family_birthdays as $family_birthday) {
 			th {
 			font-weight: bold;
 			padding: 10px;
-			text-align: left;
+			text-align: center;
+			border: 1px solid black;
+			background-color: #f2f2f2;
+			color: #333;
 			}
 
 			td {
 			border: 1px solid #ddd;
 			padding: 10px;
+			text-align: center;
 			}
 
 			td:first-child {
@@ -280,7 +241,6 @@ foreach ($family_birthdays as $family_birthday) {
 			text-align: center;
 			text-decoration: none;
 			display: inline-block;
-			font-size: 16px;
 			margin: 4px 2px;
 			cursor: pointer;
 			}
@@ -289,7 +249,150 @@ foreach ($family_birthdays as $family_birthday) {
 			background-color: #3e8e41;
 			}
 
+			@media (max-width: 768px) {
+			table {
+				font-size: 12px;
+				max-width: 100%;
+			}
+			}
+
+			@media only screen and (max-width: 414px) {
+			table {
+				font-size: 10px;
+				max-width: 100%;
+			}
+
+			th, td {
+				padding: 5px;
+			}
+		}
+
+
+
 		
+
+		/* nav bar */
+			h3{ 
+				
+				color: white;
+			}
+
+
+			.wrapper{
+				position: fixed;
+				top: 0;
+				left: 0;
+				height: 100%;
+				width: 100%;
+				background: #4682B4;
+				clip-path: circle(25px at 45px 45px);
+				transition: all 0.3s ease-in-out;
+				}
+				#active:checked ~ .wrapper{
+				clip-path: circle(75%);
+				}
+				.menu-btn{
+				position: absolute;
+				z-index: 2;
+				left: 20px;
+				top: 20px;
+				height: 50px;
+				width: 50px;
+				text-align: center;
+				line-height: 50px;
+				border-radius: 50%;
+				font-size: 20px;
+				color: #fff;
+				cursor: pointer;
+				background: #000;
+				transition: all 0.3s ease-in-out;
+				}
+				#active:checked ~ .menu-btn{
+				color: #fff;
+				}
+				#active:checked ~ .menu-btn i:before{
+				content: "\f00d";
+				}
+				.wrapper ul{
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				list-style: none;
+				text-align: center;
+				}
+				.wrapper ul li{
+				margin: 15px 0;
+				}
+				.wrapper ul li a{
+				color: none;
+				text-decoration: none;
+				font-size: 30px;
+				font-weight: 500;
+				padding: 5px 30px;
+				color: #fff;
+				border-radius: 50px;
+				background: #4682B4;
+				position: relative;
+				line-height: 50px;
+				transition: all 0.3s ease;
+				}
+				.wrapper ul li a:after{
+				position: absolute;
+				content: "";
+				background: #fff;
+				background: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);
+				/*background: linear-gradient(375deg, #1cc7d0, #2ede98);*/
+				width: 104%;
+				height: 110%;
+				left: -2%;
+				top: -5%; /* if the font is 'Oswald'*/
+				border-radius: 50px;
+				transform: scaleY(0);
+				z-index: -1;
+				animation: rotate 1.5s linear infinite;
+				transition: transform 0.3s ease;
+				}
+				.wrapper ul li a:hover:after{
+				transform: scaleY(1);
+				}
+				.wrapper ul li a:hover{
+				color: #000;
+				}
+				input[type="checkbox"]{
+				display: none;
+				}
+				.content{
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				z-index: -1;
+				text-align: center;
+				width: 100%;
+				color: #202020;
+				}
+				.content .title{
+				font-size: 40px;
+				font-weight: 700;
+				}
+				.content p{
+				font-size: 35px;
+				font-weight: 600;
+				}
+
+				@keyframes rotate {
+				0%{
+					filter: hue-rotate(0deg);
+				}
+				100%{
+					filter: hue-rotate(360deg);
+				}
+				}
+
+			
+
+
 		.success-message, .error-message {
 			width: 50%;
 			padding: 10px;
@@ -312,11 +415,6 @@ foreach ($family_birthdays as $family_birthday) {
 		transition: 0.3s ease;
 		}
 
-		.show-link:hover{
-			background-color: #555;
-			cursor: pointer;
-		}
-
 		.add-link{
 		color: white;
 		text-decoration: none;
@@ -326,20 +424,10 @@ foreach ($family_birthdays as $family_birthday) {
 		transition: 0.3s ease;
 		}
 
-		.add-link:hover{
-			background-color: #555;
-			cursor: pointer;
-
-		}
-	
 		.container {
 		margin-left: 120px;
 		padding: 20px;
 		
-		}
-	
-		h1 {
-		margin-bottom: 20px;
 		}
 	
 		form {
@@ -363,16 +451,7 @@ foreach ($family_birthdays as $family_birthday) {
 		margin-bottom: 10px;
 		}
 	
-		table {
-		border-collapse: collapse;
-		margin-bottom: 20px;
-		}
-	
-		th, td {
-		border: 1px solid black;
-		padding: 10px;
-		text-align: center;
-		}
+
 		#add-form{
 			display: none;
 		}
@@ -382,15 +461,24 @@ foreach ($family_birthdays as $family_birthday) {
 	</style>
 	</head>
 	<body>
-	<nav class="navbar">
-		<h3>Welcome <?php echo $first_name; ?></h3>
-		<p class="add-link" id="add-toggle">Add Family Members</p>
-		<p class="show-link" id="show-toggle">Show Family Members</p>
-		<a href="logout.php">Logout</a>
-	</nav>
+
+	<input type="checkbox" id="active">
+    <label for="active" class="menu-btn"><i class="fas fa-bars"></i></label>
+    <div class="wrapper">
+		<ul>
+	<h3>Welcome <?php echo $first_name; ?></h3>
+	<li class="add-link" id="add-toggle"><a href="#add-form">Add Family Members</a></li>
+	<li class="show-link" id="show-toggle"><a href="#show-form">Show Family Members</a></li>
+	<li><a href="#">pay bills</a></li>
+	<li class = "logout" ><a href="logout.php">Logout</a></li>
+	<li><a href="#">Feedback</a></li>
+	</ul>
+	</div>
+
 	<div class="container">
 		<form method="post" id ="add-form">
-			<h1>Add a family member</h1>
+			<h2>Add a family member </h2>
+			<br>
 			<label for="username">Username:</label>
 			<input type="text" id="username" name="username" required>
 			<label for="firstname">First name:</label>
@@ -415,7 +503,8 @@ foreach ($family_birthdays as $family_birthday) {
 			<div class="success"><?php echo $success; ?></div>
 		<?php endif; ?>
 		<form id="show-form">
-    		<h1>Family members</h1>
+    		<h2>Family members</h2>
+
     		<table>
         		<thead>
             	<tr>
@@ -476,6 +565,8 @@ foreach ($family_birthdays as $family_birthday) {
     		<input type="submit" name="edit_family_member_submit" value="Edit">
 		</form>
 	</div>
+
+
 	<script>
 	const editForm = document.getElementById('edit-form');
     const editIdInput = document.getElementById('edit-id');
@@ -519,6 +610,44 @@ foreach ($family_birthdays as $family_birthday) {
 
 		}
 	}
+
+//show form table javascript 
+// get the table and the background container elements
+const table = document.querySelector('table');
+const formContainer = document.querySelector('#show-form');
+
+// set the initial min-height of the background container to the table height
+formContainer.style.minHeight = table.offsetHeight + 'px';
+
+// update the min-height of the background container whenever the table content changes
+const observer = new MutationObserver(() => {
+  formContainer.style.minHeight = table.offsetHeight + 'px';
+});
+observer.observe(table, { childList: true, subtree: true });
+
+// update the min-height of the background container whenever the window is resized
+window.addEventListener('resize', () => {
+  formContainer.style.minHeight = table.offsetHeight + 'px';
+});
+
+
+// nav bar javascript
+// Get all the wrapper elements containing the navigation bars
+const wrappers = document.querySelectorAll(".wrapper");
+
+// Loop through each wrapper
+wrappers.forEach(wrapper => {
+  // Get all the links inside the navigation bar of this wrapper
+  const links = wrapper.querySelectorAll("ul li a");
+  // Add a click event listener to each link
+  links.forEach(link => {
+    link.addEventListener("click", () => {
+      // Hide the navigation bar by setting its display property to none
+      wrapper.style.display = "none";
+    });
+  });
+});
+
 </script>
 </body>
 </html>
