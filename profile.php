@@ -101,7 +101,7 @@ foreach ($family_birthdays as $family_birthday) {
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Welcome</title>
+	<title>profile</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
@@ -117,23 +117,25 @@ foreach ($family_birthdays as $family_birthday) {
 		body {
 			font-family: 'Poppins', sans-serif;
 			display: flex;
-			justify-content: center;
-			align-items: center;
 			min-height: 100vh;
 			background-color: #F0F8FF;
 			overflow-y: scroll;
+			align-items: center;
+			justify-items: center; 
 		}
 				
 		#add-form {
 			display: flex;
 			flex-direction: column;
 			align-items: center;
+			justify-items: center; 
 			background-color: #DCDCDC;
 			padding: 20px;
 			border-radius: 10px;
 			box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 			width: 100%;
 			margin-bottom: 30px;
+			display: none;
 		}
 		
 
@@ -199,6 +201,7 @@ foreach ($family_birthdays as $family_birthday) {
 			display: block;
 			align-items: center; 
 			justify-content: center; 
+			display: none;
 			}
 
 			table {
@@ -210,9 +213,7 @@ foreach ($family_birthdays as $family_birthday) {
 			font-size: 16px;
 			}
 
-			thead {
-			background-color: #ddd;
-			}
+			thead {background-color: #ddd;}
 
 			th {
 			font-weight: bold;
@@ -229,9 +230,7 @@ foreach ($family_birthdays as $family_birthday) {
 			text-align: center;
 			}
 
-			td:first-child {
-			font-weight: bold;
-			}
+			td:first-child {font-weight: bold;}
 
 			form button {
 			background-color: #4CAF50;
@@ -245,10 +244,10 @@ foreach ($family_birthdays as $family_birthday) {
 			cursor: pointer;
 			}
 
-			form button:hover {
-			background-color: #3e8e41;
-			}
+			form button:hover {background-color: #3e8e41;}
 
+			
+		/*to make it responsive for different screen dimensions */
 			@media (max-width: 768px) {
 			table {
 				font-size: 12px;
@@ -256,143 +255,129 @@ foreach ($family_birthdays as $family_birthday) {
 			}
 			}
 
+			
+		/*to make it responsive for different screen dimensions */
 			@media only screen and (max-width: 414px) {
 			table {
 				font-size: 10px;
 				max-width: 100%;
 			}
 
-			th, td {
-				padding: 5px;
-			}
-		}
+			th, td {padding: 5px;}}
 
 
-
-		
 
 		/* nav bar */
-			h3{ 
-				
-				color: white;
-			}
+		h3{ color: white;}
 
+		nav {
+		height: 100vh;
+		background-color: #333;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		padding: 20px;
+		}
 
-			.wrapper{
-				position: fixed;
-				top: 0;
-				left: 0;
-				height: 100%;
-				width: 100%;
-				background: #4682B4;
-				clip-path: circle(25px at 45px 45px);
-				transition: all 0.3s ease-in-out;
-				}
-				#active:checked ~ .wrapper{
-				clip-path: circle(75%);
-				}
-				.menu-btn{
-				position: absolute;
-				z-index: 2;
-				left: 20px;
-				top: 20px;
-				height: 50px;
-				width: 50px;
-				text-align: center;
-				line-height: 50px;
-				border-radius: 50%;
-				font-size: 20px;
-				color: #fff;
-				cursor: pointer;
-				background: #000;
-				transition: all 0.3s ease-in-out;
-				}
-				#active:checked ~ .menu-btn{
-				color: #fff;
-				}
-				#active:checked ~ .menu-btn i:before{
-				content: "\f00d";
-				}
-				.wrapper ul{
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%, -50%);
-				list-style: none;
-				text-align: center;
-				}
-				.wrapper ul li{
-				margin: 15px 0;
-				}
-				.wrapper ul li a{
-				color: none;
-				text-decoration: none;
-				font-size: 30px;
-				font-weight: 500;
-				padding: 5px 30px;
-				color: #fff;
-				border-radius: 50px;
-				background: #4682B4;
-				position: relative;
-				line-height: 50px;
-				transition: all 0.3s ease;
-				}
-				.wrapper ul li a:after{
-				position: absolute;
-				content: "";
-				background: #fff;
-				background: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);
-				/*background: linear-gradient(375deg, #1cc7d0, #2ede98);*/
-				width: 104%;
-				height: 110%;
-				left: -2%;
-				top: -5%; /* if the font is 'Oswald'*/
-				border-radius: 50px;
-				transform: scaleY(0);
-				z-index: -1;
-				animation: rotate 1.5s linear infinite;
-				transition: transform 0.3s ease;
-				}
-				.wrapper ul li a:hover:after{
-				transform: scaleY(1);
-				}
-				.wrapper ul li a:hover{
-				color: #000;
-				}
-				input[type="checkbox"]{
-				display: none;
-				}
-				.content{
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%, -50%);
-				z-index: -1;
-				text-align: center;
-				width: 100%;
-				color: #202020;
-				}
-				.content .title{
-				font-size: 40px;
-				font-weight: 700;
-				}
-				.content p{
-				font-size: 35px;
-				font-weight: 600;
-				}
+		.nav-header a {
+		color: #fff;
+		font-size: 24px;
+		}
 
-				@keyframes rotate {
-				0%{
-					filter: hue-rotate(0deg);
-				}
-				100%{
-					filter: hue-rotate(360deg);
-				}
-				}
+		.nav-toggle {
+		display: none;
+		background: transparent;
+		border: none;
+		cursor: pointer;
+		height: 40px;
+		width: 40px;
+		display: flex;
+		align-items: left;
+		justify-content: left;
+		position: absolute;
+		top: 6%;
+		right: 6%;
+		}
 
-			
+		.hamburger::before,
+		.hamburger::after {
+		content: "";
+		display: block;
+		background-color: #000;
+		height: 3px;
+		width: 25px;
+		border-radius: 3px;
+		transition: all 0.2s ease-in-out;
+		}
 
+		.hamburger::before { transform: translateY(-8px);}
+		.hamburger::after { transform: translateY(5px);}
+		.nav-links { display: none;}
 
+		.nav-links.active {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: flex-start;
+		}
+
+		.nav-links li { margin: 10px 0; }
+
+		.nav-links a {
+		color: #fff;
+		font-size: 18px;
+		text-transform: uppercase;
+		text-decoration: none;
+		}
+
+		/*to make it responsive for different screen dimensions */
+		@media screen and (min-width: 769px) {
+		.nav-toggle {
+		cursor: pointer;
+		height: 40px;
+		width: 40px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: absolute;
+		top: 6px;
+		right: 6px;
+		}
+		.nav-header {margin-bottom: 20px;}
+		.nav-toggle {display: none; }
+		.nav-links {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: flex-start;
+			margin-top: 50px;
+		}
+
+		.nav-links li { margin: 20px 0;} }
+
+		
+		/*to make it responsive for different screen dimensions */
+		@media screen and (max-width: 768px) {
+		.nav-header {margin-bottom: 10px;}
+		.nav-toggle {display: block;}
+		.nav-links li {margin: 10px 0;} }
+
+		/* Create the hamburger icon */
+		.hamburger {
+		display: inline-block;
+		width: 20px;
+		height: 3px;
+		background-color: #333;
+		margin: 4px 0;
+		transition: transform 0.3s ease-in-out;
+		}
+
+		/* fixing the way that hamburger sign looks when in use*/
+		.nav-links.active .hamburger:first-child {transform: rotate(45deg) translate(5px, 5px);}
+		.nav-links.active .hamburger:last-child {transform: rotate(-45deg) translate(5px, -5px);}
+		.nav-links.active .hamburger:nth-child(2) {	opacity: 0; }
+		
+		
 		.success-message, .error-message {
 			width: 50%;
 			padding: 10px;
@@ -437,9 +422,7 @@ foreach ($family_birthdays as $family_birthday) {
 		margin-bottom: 20px;
 		}
 	
-		label, input, select {
-		margin-bottom: 10px;
-		}
+		label, input, select {margin-bottom: 10px;}
 	
 		.error {
 		color: red;
@@ -451,29 +434,25 @@ foreach ($family_birthdays as $family_birthday) {
 		margin-bottom: 10px;
 		}
 	
-
-		#add-form{
-			display: none;
-		}
-		#show-form{
-			display: none;
-		}
 	</style>
 	</head>
 	<body>
 
-	<input type="checkbox" id="active">
-    <label for="active" class="menu-btn"><i class="fas fa-bars"></i></label>
-    <div class="wrapper">
-		<ul>
-	<h3>Welcome <?php echo $first_name; ?></h3>
-	<li class="add-link" id="add-toggle"><a href="#add-form">Add Family Members</a></li>
-	<li class="show-link" id="show-toggle"><a href="#show-form">Show Family Members</a></li>
-	<li><a href="#">pay bills</a></li>
-	<li class = "logout" ><a href="logout.php">Logout</a></li>
-	<li><a href="#">Feedback</a></li>
-	</ul>
-	</div>
+	<nav>
+    <div class="nav-header">
+      <button class="nav-toggle">
+        <span class="hamburger"></span>
+      </button>
+    </div>
+    <ul class="nav-links">
+	  <h3>Welcome <?php echo $first_name; ?></h3> 
+      <li class="add-link" id="add-toggle"><a href="#add-form">Add Family Memebers</a></li>
+      <li class="show-link" id="show-toggle"><a href="#show-form">Show Family Memebers</a></li>
+      <li><a href="#">pay bills</a></li>
+      <li class = "logout" ><a href="logout.php"><a href="#">Logout</a></li>
+    </ul>
+  </nav>
+
 
 	<div class="container">
 		<form method="post" id ="add-form">
@@ -632,21 +611,19 @@ window.addEventListener('resize', () => {
 
 
 // nav bar javascript
-// Get all the wrapper elements containing the navigation bars
-const wrappers = document.querySelectorAll(".wrapper");
+const navToggle = document.querySelector(".nav-toggle");
+const navLinks = document.querySelector(".nav-links");
 
-// Loop through each wrapper
-wrappers.forEach(wrapper => {
-  // Get all the links inside the navigation bar of this wrapper
-  const links = wrapper.querySelectorAll("ul li a");
-  // Add a click event listener to each link
-  links.forEach(link => {
-    link.addEventListener("click", () => {
-      // Hide the navigation bar by setting its display property to none
-      wrapper.style.display = "none";
-    });
-  });
+navToggle.addEventListener("click", () => {
+  navLinks.classList.toggle("active");
+
+  if (navLinks.classList.contains("active")) {
+    navToggle.innerHTML = '<span class="hamburger"></span><span class="hamburger"></span><span class="hamburger"></span>';
+  } else {
+    navToggle.innerHTML = '<span class="hamburger"></span>';
+  }
 });
+
 
 </script>
 </body>
